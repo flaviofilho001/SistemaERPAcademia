@@ -52,14 +52,18 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtDoenca = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.dateTimeNascimento = new System.Windows.Forms.DateTimePicker();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnDeletar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.dateTimeInicio = new System.Windows.Forms.DateTimePicker();
             this.dateTimeFim = new System.Windows.Forms.DateTimePicker();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAlterar = new System.Windows.Forms.Button();
+            this.txtBusca = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // LblNome
@@ -181,6 +185,7 @@
             // 
             this.txtCpf.Enabled = false;
             this.txtCpf.Location = new System.Drawing.Point(413, 45);
+            this.txtCpf.Mask = "000,000,000-00";
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(173, 22);
             this.txtCpf.TabIndex = 14;
@@ -189,14 +194,17 @@
             // 
             this.txtTel.Enabled = false;
             this.txtTel.Location = new System.Drawing.Point(115, 88);
+            this.txtTel.Mask = "(00)00000-0000";
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(173, 22);
             this.txtTel.TabIndex = 15;
+            this.txtTel.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtTel_MaskInputRejected);
             // 
             // txtAltura
             // 
             this.txtAltura.Enabled = false;
             this.txtAltura.Location = new System.Drawing.Point(115, 178);
+            this.txtAltura.Mask = "000 cm";
             this.txtAltura.Name = "txtAltura";
             this.txtAltura.Size = new System.Drawing.Size(81, 22);
             this.txtAltura.TabIndex = 16;
@@ -205,6 +213,7 @@
             // 
             this.txtPeso.Enabled = false;
             this.txtPeso.Location = new System.Drawing.Point(288, 178);
+            this.txtPeso.Mask = "000 kg";
             this.txtPeso.Name = "txtPeso";
             this.txtPeso.Size = new System.Drawing.Size(77, 22);
             this.txtPeso.TabIndex = 17;
@@ -294,15 +303,6 @@
             this.label13.TabIndex = 27;
             this.label13.Text = "CADASTRO";
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(679, 45);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(37, 16);
-            this.label14.TabIndex = 28;
-            this.label14.Text = "Foto:";
-            // 
             // dateTimeNascimento
             // 
             this.dateTimeNascimento.Enabled = false;
@@ -343,17 +343,6 @@
             this.btnDeletar.UseVisualStyleBackColor = true;
             this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
             // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Enabled = false;
-            this.btnCancelar.Location = new System.Drawing.Point(694, 418);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(94, 23);
-            this.btnCancelar.TabIndex = 33;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
             // dateTimeInicio
             // 
             this.dateTimeInicio.Enabled = false;
@@ -370,12 +359,68 @@
             this.dateTimeFim.Size = new System.Drawing.Size(167, 22);
             this.dateTimeFim.TabIndex = 35;
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Enabled = false;
+            this.btnCancelar.Location = new System.Drawing.Point(682, 418);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(94, 23);
+            this.btnCancelar.TabIndex = 33;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnAlterar
+            // 
+            this.btnAlterar.Enabled = false;
+            this.btnAlterar.Location = new System.Drawing.Point(791, 418);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(94, 23);
+            this.btnAlterar.TabIndex = 36;
+            this.btnAlterar.Text = "Alterar";
+            this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
+            // 
+            // txtBusca
+            // 
+            this.txtBusca.Enabled = false;
+            this.txtBusca.Location = new System.Drawing.Point(915, 42);
+            this.txtBusca.Name = "txtBusca";
+            this.txtBusca.Size = new System.Drawing.Size(345, 22);
+            this.txtBusca.TabIndex = 38;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(868, 45);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(51, 16);
+            this.label15.TabIndex = 37;
+            this.label15.Text = "Busca: ";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(39, 498);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(1221, 232);
+            this.dataGridView1.TabIndex = 39;
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SlateGray;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1303, 697);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.txtBusca);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.dateTimeFim);
             this.Controls.Add(this.dateTimeInicio);
             this.Controls.Add(this.btnCancelar);
@@ -383,7 +428,6 @@
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.dateTimeNascimento);
-            this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtDoenca);
             this.Controls.Add(this.label12);
@@ -411,6 +455,7 @@
             this.Name = "FrmPrincipal";
             this.Text = "Principal";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -442,14 +487,17 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtDoenca;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DateTimePicker dateTimeNascimento;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnDeletar;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.DateTimePicker dateTimeInicio;
         private System.Windows.Forms.DateTimePicker dateTimeFim;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnAlterar;
+        private System.Windows.Forms.TextBox txtBusca;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
